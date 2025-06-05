@@ -1,0 +1,563 @@
+::-webkit-scrollbar {
+      width: 5px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {            
+    background: #504b4b;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #302d2d;
+}
+
+/*Text animation*/
+.typewriter1 {
+  overflow: hidden;
+  border-right: 2px solid #58C0DB;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.hero{
+    background-image: url(images/vg-hero.avif), linear-gradient(rgba(5, 12, 18, 0.8), rgba(2, 21, 42, 0.8));
+    background-size: cover;
+    background-position: center;
+    background-repeat: none;
+    margin-top: -70px;
+    height: 100vh;
+    margin-bottom: 0;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color: #fff;
+}
+.hero-content {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: left;
+    color: white;
+    padding: 0 10%;
+}
+.title-text {
+    font-size: 5rem;
+    font-weight: bold;
+    white-space: pre-line;
+}
+
+.side-extra {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    color: #58C0DB; /* sea-serpent color */
+    font-family: 'Bebas Neue', 'cursive';
+    padding: 10px;
+    padding-right: 20px;
+}
+.side-line {
+    width: 1.5px;
+    height: 200px;
+    background-color: #58C0DB; /* sea-serpent color */
+    border: none;
+    margin: 0 0 10px 0;
+}
+.side-number {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.side-text {
+    color: #58C0DB;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+.side-text p:last-child {
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    margin-top: 5px;
+    user-select: none;
+}
+.side-text hr {
+    width: 3px;
+    height: 180px;
+    background: repeating-linear-gradient(
+        45deg,
+        #58C0DB,
+        #58C0DB 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    border: none;
+    margin: 0 -10px 2px 5px;
+}
+
+main {
+    padding: 5% 0 10% 0;
+    background: linear-gradient(135deg, #08204f, #0f4084);
+    color: #baebf5;
+    min-height: 100vh;
+}
+.explain {
+    padding: 0 10% 5%;
+    text-align: center;
+}
+.role {
+    padding: 2rem 10%;
+}
+.role-content.grid-container {
+    padding: 0 5rem;
+    display: grid;
+    grid-template-columns: 10px 150px 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 1rem 5rem;
+    align-items: start;
+}
+.role-line {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+    width: 3px;
+    background-color: var(--sea-serpent);
+    border-radius: 2px;
+    justify-self: center;
+    align-self: stretch;
+}
+.role-name {
+    grid-column: 2 / 3;
+    font-weight: 600;
+    white-space: nowrap;
+    margin: 0;
+}
+.role-desc {
+    grid-column: 3 / 4;
+    max-width: 600px;
+    margin: 0;
+    text-align: left;
+}
+
+.mass-death {
+    padding: 8% 10%;
+}
+.mass-death .row {
+    position: relative;
+    margin-bottom: 3.5rem;
+    padding-bottom: 1.5rem;
+}
+.mass-death .row {
+    border-bottom: 2px dashed rgba(109, 167, 206, 0.868);
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+}
+
+.mass-death .row::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+}
+
+/* Album cards container */
+.album {
+    width: 70%;
+    margin: 0 auto;
+    max-width: 960px;
+}
+.album-section {
+    width: 80%;
+    margin: 3rem auto;
+    max-width: 960px;
+}
+.album-cards {
+    display: flex;
+    gap: 1rem;
+    overflow: hidden;
+}
+.album-card {
+    background-color: var(--beau-blue);
+    color: #fff;
+    flex: 1 1 0;
+    cursor: pointer;
+    overflow: hidden;
+    transition: flex 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    height: 400px; /* fixed height to prevent vertical resizing */
+}
+.album-card img {
+    background-position: center;
+    background-size: cover;
+}
+.album-card:hover {
+    flex: 3 1 0;
+    z-index: 10;
+}
+.album-card:hover ~ .album-card,
+.album-card:not(:hover) {
+    flex: 1 1 0;
+}
+.card-content {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    text-align: center;
+    pointer-events: none;
+    user-select: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    backdrop-filter: blur(6px);
+    box-shadow: inset 0 -40px 40px -20px rgba(0, 0, 0, 0.7);
+    width: 100%;
+    padding: 1rem;
+}
+.album-card:hover .card-content {
+    opacity: 1;
+    pointer-events: auto;
+}
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.card-overview {
+    font-size: 0.8rem;
+    line-height: 1.3;
+}
+
+/* Protection Section */
+.protection-section {
+    padding: 3rem 15%;
+    text-align: center;
+}
+.protection-section h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+}
+.protection-items {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+}
+.protection-item {
+    max-width: 250px;
+    text-align: center;
+}
+.protection-item i.fas {
+    color: #58C0DB;
+    margin-bottom: 1rem;
+}
+.protection-item h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #58C0DB;
+}
+.protection-item p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #B5D5DA;
+    line-height: 1.3;
+}
+
+.quotation-section .quotation {
+    padding: 0 20%;
+}
+.quotation-section .quotation p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+.quotation-section .quotation h5 {
+    font-size: 1.5rem;
+}
+
+/* General Responsive Adjustments */
+@media (max-width: 1200px) {
+    .hero-content {
+        padding: 0 8%;
+    }
+    .explain, .role, .mass-death {
+        padding: 0 8% 5%;
+    }
+    .protection-section {
+        padding: 3rem 10%;
+    }
+    .quotation-section .quotation {
+        padding: 0 15%;
+    }
+}
+
+@media (max-width: 992px) {
+    .title-text {
+        font-size: 4rem;
+    }
+    .album {
+        width: 85%;
+    }
+    .album-section {
+        width: 90%;
+    }
+    .role-content.grid-container {
+        padding: 0 3rem;
+        gap: 1rem 3rem;
+    }
+    .protection-items {
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Hero Section */
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .hero-content {
+        position: relative;
+        left: auto;
+        transform: none;
+        padding: 20% 5% 10%;
+        text-align: center;
+    }
+    .title-text {
+        font-size: 3rem;
+    }
+    
+    /* Side Extra */
+    .side-extra {
+        position: relative;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+        margin-top: 20px;
+    }
+    .side-line {
+        width: 100px;
+        height: 1.5px;
+        margin: 0 10px;
+    }
+    .side-text {
+        writing-mode: horizontal-tb;
+        transform: none;
+        margin: 0 10px;
+    }
+    .side-text hr {
+        display: none;
+    }
+    .side-number {
+        margin: 0 10px;
+    }
+    
+    /* Main Content */
+    .explain, .role, .mass-death {
+        padding: 0 5% 5%;
+    }
+    
+    /* Role Section */
+    .role-content.grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        padding: 0;
+        gap: 1rem;
+    }
+    .role-line {
+        grid-column: 1;
+        grid-row: auto;
+        width: 100px;
+        height: 3px;
+        margin: 0 auto 1rem;
+    }
+    .role-name, .role-desc {
+        grid-column: 1;
+        text-align: center;
+    }
+    
+    /* Mass Death Section */
+    .mass-death .row {
+        flex-direction: column;
+    }
+    .mass-death .col-md-6 {
+        margin-bottom: 2rem;
+    }
+    .mass-death .col-md-6:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* Album Cards */
+    .album-cards {
+        flex-direction: column;
+        height: auto;
+    }
+    .album-card {
+        flex: 1 1 auto;
+        height: 300px;
+        margin-bottom: 1rem;
+    }
+    .album-card:last-child {
+        margin-bottom: 0;
+    }
+    .album-card:hover {
+        flex: 1 1 auto;
+    }
+    
+    /* Protection Section */
+    .protection-section h2 {
+        font-size: 2.5rem;
+    }
+    .protection-items {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    .protection-item {
+        max-width: 100%;
+    }
+    
+    /* Quotation Section */
+    .quotation-section .quotation {
+        padding: 0 5%;
+    }
+    .quotation-section .quotation p {
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Hero Section */
+    .title-text {
+        font-size: 2.5rem;
+    }
+    
+    /* Side Extra */
+    .side-extra {
+        flex-direction: column;
+    }
+    .side-line {
+        width: 1.5px;
+        height: 50px;
+        margin: 10px 0;
+    }
+    
+    /* Main Content */
+    .explain, .role, .mass-death {
+        padding: 0 3% 5%;
+        margin: 10% 0;
+    }
+    
+    /* Protection Section */
+    .protection-section h2 {
+        font-size: 2rem;
+    }
+    
+    /* Footer Adjustments */
+    footer .row > div {
+        margin-bottom: 2rem;
+    }
+    footer .row > div:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .title-text {
+        font-size: 2rem;
+    }
+    .side-text p:first-child {
+        font-size: 0.9rem;
+    }
+    .side-number {
+        font-size: 2.5rem;
+    }
+}
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content .title-text {
+        font-size: 2rem;
+    }
+
+    .side-extra {
+        position: static;
+        text-align: center;
+        margin-top: 20px;
+    }
+}
+@media (max-width: 768px) {
+   .ripple-cards {
+       flex-direction: column;
+       align-items: center;
+   }
+   .ripple-card {
+       width: 90%;
+       height: 250px;
+   }
+}
+@media (max-width: 768px) {
+   .ripple-cards {
+       flex-direction: column;
+   }
+   .ripple-card {
+       flex: unset;
+       height: auto;
+   }
+}
+@media (max-width: 576px) {
+    .role h3, .role p {
+        text-align: center;
+    }
+    .role-content {
+        padding: 0 1rem;
+    }
+}
+@media (max-width: 1600px){
+    .card-content{
+        text-align: center;
+    }
+    .card-overview{
+        flex: unset;
+        height: auto;
+    }
+}
+@media (max-width: 768px) {
+    footer .row > div {
+        text-align: center;
+    }
+    .footer-links {
+        padding-left: 0;
+    }
+}
