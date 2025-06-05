@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <!-- CSS Styling -->
+    <link rel="stylesheet" href="pp.css" />
+
+    <!-- Fontawesome | Bootstrap | AOS -->
+    <script src="https://kit.fontawesome.com/c25cabee86.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bebas+Neue&family=Irish+Grover&family=Kaushan+Script&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Luxurious+Roman&family=Monomakh&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Seaweed+Script&family=UnifrakturMaguntia&display=swap" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <style>
+      :root {
+        --rich-black: #050c12;
+        --beau-blue: #b5d5da;
+        --sea-serpent: #58c0db;
+        --green-blue: #166da6;
+        --dark-midnight: #063467;
+      }
+
+      body {
+        font-family: "Playfair Display", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        background-color: #f8f9fa;
+        padding-top: 70px; /* To account for fixed navbar */
+      }
+
+      /* Transparent sticky navbar */
+      .navbar {
+        background-color: rgba(5, 12, 18, 0.3) !important;
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+      .navbar.scrolled {
+        background-color: var(--rich-black) !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .navbar-brand img {
+        height: 50px;
+        transition: transform 0.3s ease;
+      }
+      .navbar-brand:hover img {
+        transform: scale(1.05);
+      }
+      .nav-link {
+        color: #fff !important;
+        font-weight: 500;
+        position: relative;
+        margin: 0 8px;
+        padding-bottom: 5px !important;
+        transition: all 0.3s ease;
+      }
+      .nav-link:hover {
+        color: var(--beau-blue) !important;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--sea-serpent);
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after,
+      .nav-link:focus::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+      .dropdown-menu {
+        background-color: rgba(5, 12, 18, 0.7) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(5, 12, 18, 0.7) !important;
+      }
+      .dropdown-item {
+        color: var(--beau-blue) !important;
+        transition: all 0.2s ease;
+        position: relative;
+        padding-left: 1.5rem;
+      }
+      .dropdown-item:hover {
+        background-color: var(--green-blue);
+        padding-left: 2rem;
+        color: white !important;
+      }
+      .dropdown-item::before {
+        content: "→";
+        position: absolute;
+        left: 0.5rem;
+        opacity: 0;
+        transition: all 0.2s ease;
+        color: var(--sea-serpent);
+      }
+      .dropdown-item:hover::before {
+        opacity: 1;
+        left: 0.8rem;
+      }
+      .dropdown-toggle::after {
+        display: inline-block;
+        margin-left: 0.3em;
+        vertical-align: middle;
+        border: none;
+        color: var(--sea-serpent);
+        font-size: 0.7em;
+      }
+
+      /* Footer styles */
+      footer {
+        background-color: var(--rich-black);
+        color: #fff;
+        padding: 3rem 0 1rem 0;
+      }
+      footer h5 {
+          font-family: 'Bebas Neue', cursive;
+          font-size: 2rem;
+      }
+      .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      .footer-links a:hover {
+        color: var(--sea-serpent);
+        text-decoration: underline;
+        padding-left: 5px;
+      }
+      .btn2 {
+          position: relative;
+          display: inline-block;
+          padding: 15px 30px;
+          border: 2px solid #fefefe;
+          text-transform: uppercase;
+          color: #fefefe;
+          text-decoration: none;
+          transition: 0.3s;
+          font-family: 'Bebas Neue', cursive;
+          font-size: 1.25rem;
+          letter-spacing: 3px;
+      }
+      .btn2::before {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          width: calc(100% + 4px);
+          height: calc(100% - -2px);
+          background-color: var(--rich-black);
+          transition: 0.3s ease-out;
+          transform: scaleY(1);
+      }
+      .btn2::after {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          width: calc(100% + 4px);
+          height: calc(100% - 50px);
+          background-color: var(--rich-black);
+          transition: 0.3s ease-out;
+          transform: scaleY(1);
+      }
+      .btn2:hover::before {
+          transform: translateY(-25px);
+          height: 0;
+      }
+      .btn2:hover::after {
+          transform: scaleX(0);
+          transition-delay: 0.15s;
+      }
+      .btn2:hover {
+          border: 2px solid #fefefe;
+      }
+      .btn2 span {
+          position: relative;
+          z-index: 3;
+      }
+      button {
+          text-decoration: none;
+          border: none;
+          background-color: transparent;
+      }
+
+      :root {
+          --rich-black: #021024; /* Deep black for background */
+          --dark-blue: #052659; /* Dark blue for offcanvas */
+          --teal: #5483B3; /* Teal for accents */
+          --light-teal: #7DA0CA; /* Lighter teal for headers */
+          --light-blue: #C1E8FF; /* Light blue for text */
+      }
+        
+      /* Button to open offcanvas */
+      .info-btn {
+          position: fixed;
+          bottom: 20px; /* Move button to the bottom */
+          right: 20px;
+          background-color: var(--dark-blue); /* Ocean teal button */
+          color: white;
+          border: none;
+          padding: 12px 20px;
+          border-radius: 50%;
+          cursor: pointer;
+          z-index: 1000;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+          transition: background-color 0.3s;
+      }
+      .info-btn:hover {
+          background-color: var(--light-teal); /* Lighter teal on hover */
+      }
+
+      /* Offcanvas styles - starts completely hidden */
+      .offcanvas {
+          position: fixed;
+          top: 0;
+          right: -400px;
+          width: 380px;
+          height: 100%;
+          background-color: var(--dark-blue); /* Darker ocean background for offcanvas */
+          box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+          transition: right 0.3s ease;
+          z-index: 1001;
+          padding: 20px;
+          overflow-y: auto;
+          visibility: hidden; /* Added to ensure it's not visible initially */
+      }
+        
+      .offcanvas:target {
+          right: 0;
+          visibility: visible; /* Only becomes visible when targeted */
+      }
+      .offcanvas-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+          padding-bottom: 10px;
+          border-bottom: 2px solid var(--light-teal); /* Light teal border */
+          font-family: 'Bebas Neue', cursive;
+      }
+      .offcanvas-title {
+          color: var(--light-blue); /* Light title color */
+          margin: 0;
+          font-family: 'Bebas Neue', cursive; /* Title font */
+          font-size: 1.8em; /* Increased font size for better visibility */
+      }
+      .close-btn {
+          background: none;
+          border: none;
+          font-size: 24px;
+          cursor: pointer;
+          color: var(--light-blue); /* Light close button color */
+          text-decoration: none;
+      }
+      /* Accordion styles using checkbox hack */
+      .accordion {
+          margin-bottom: 15px;
+      }
+      .accordion-input {
+          display: none;
+      }
+      .accordion-header {
+          background-color: var(--teal); /* Darker teal for accordion header */
+          color: var(--light-blue); /* Light text color */
+          padding: 12px 15px;
+          cursor: pointer;
+          border-radius: 5px;
+          font-weight: bold;
+          display: block;
+          transition: background-color 0.3s, color 0.3s; /* Added color transition */
+      }
+      .accordion-header:hover {
+          background-color: var(--light-teal); /* Lighter teal on hover */
+          color: var(--rich-black); /* Darker text color on hover */
+      }
+      .accordion-header::after {
+          content: '+';
+          float: right;
+          font-size: 18px;
+      }
+      .accordion-input:checked + .accordion-header::after {
+          content: '-';
+      }
+      .accordion-content {
+          padding: 0 15px;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease, padding 0.3s ease;
+          background-color: var(--rich-black); /* Darker content background */
+          border-radius: 0 0 5px 5px;
+          color: var(--light-blue); /* Light text color for content */
+      }
+      .accordion-input:checked ~ .accordion-content {
+          padding: 15px;
+          max-height: 500px;
+      }
+        
+      /* FAQ list styles */
+      .faq-list {
+          margin-top: 20px;
+          color: var(--light-blue); /* Light text color for FAQ */
+      }
+      .faq-list h3 {
+          font-family: 'Bebas Neue', cursive;
+          font-size: 2rem;
+      }
+      .faq-item {
+          margin-bottom: 15px;
+          background-color: var(--teal); /* Darker teal for FAQ item */
+          padding: 15px;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      }
+      .faq-question {
+          color: var(--light-blue); /* Light question color */
+          font-weight: bold;
+          margin-bottom: 8px;
+      }
+        
+      /* Section divider */
+      .section-divider {
+          margin: 25px 0;
+          border: 0;
+          height: 1px;
+          background-image: linear-gradient(to right, rgba(255,255,255,0), var(--light-teal), rgba(255,255,255,0));
+      }
+        
+      /* Contact info */
+      .contact-info {
+          margin-top: 20px;
+          font-size: 14px;
+          color: var(--light-blue); /* Light text color for contact info */
+      }
+      .contact-info h4 {
+          font-family: 'Bebas Neue', cursive;
+      }
+      .contact-info a {
+          color: var(--light-teal); /* Light link color */
+          text-decoration: none;
+      }
+      .contact-info a:hover {
+          text-decoration: underline;
+      }
+        
+      /* Overlay when offcanvas is open */
+      .overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(2, 16, 36, 0.5);
+          opacity: 0.5;
+          z-index: 1000;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.3s ease;
+      }
+      .offcanvas:target ~ .overlay {
+          opacity: 1;
+          pointer-events: auto;
+      }
+
+      /* Subscribe Modal Styles */
+      .subscribe {
+          position: relative;
+          height: 180px;
+          width: 300px;
+          padding: 20px;
+          background-color: #FFF;
+          border-radius: 4px;
+          color: #333;
+          box-shadow: 0px 0px 60px 5px rgba(0, 0, 0, 0.4);
+          border: none;
+      }
+      .subscribe:after {
+          position: absolute;
+          content: "";
+          right: -10px;
+          bottom: 18px;
+          width: 0;
+          height: 0;
+          border-left: 0px solid transparent;
+          border-right: 10px solid transparent;
+          border-bottom: 10px solid var(--sea-serpent);
+      }
+      .subscribe p {
+          text-align: center;
+          font-size: 20px;
+          font-weight: bold;
+          letter-spacing: 4px;
+          line-height: 28px;
+          margin-bottom: 25px;
+      }
+      .subscribe-input {
+          position: absolute;
+          bottom: 30px;
+          border: none;
+          border-bottom: 1px solid #d4d4d4;
+          padding: 10px;
+          width: 82%;
+          background: transparent;
+          transition: all .25s ease;
+      }
+      .subscribe-input:focus {
+          outline: none;
+          border-bottom: 1px solid var(--sea-serpent);
+      }
+      .submit-btn {
+          position: absolute;
+          border-radius: 30px;
+          border-bottom-right-radius: 0;
+          border-top-right-radius: 0;
+          background-color: var(--sea-serpent);
+          color: #FFF;
+          padding: 12px 25px;
+          display: inline-block;
+          font-size: 12px;
+          font-weight: bold;
+          letter-spacing: 5px;
+          right: -30px;
+          bottom: -44px;
+          cursor: pointer;
+          transition: all .25s ease;
+          box-shadow: -5px 6px 20px 0px rgba(26, 26, 26, 0.4);
+      }
+      .submit-btn:hover {
+          background-color: var(--green-blue);
+          box-shadow: -5px 6px 20px 0px rgba(88, 88, 88, 0.569);
+      }
+
+      /* Modal positioning */
+      .modal-dialog {
+          display: flex;
+          align-items: center;
+      }
+      /* Close button styling */
+      .btn-close {
+          filter: invert(0.5);
+          transition: filter 0.3s;
+      }
+      .btn-close:hover {
+          filter: invert(0.8);
+      }
+    </style>
+</head>
+<body>
+    <!-- Offcanvas panel - starts completely hidden -->
+    <div class="offcanvas" id="offcanvasPanel">
+        <div class="offcanvas-header">
+            <h2 class="offcanvas-title">Ocean Awareness Info</h2>
+            <a href="#" class="close-btn">&times;</a>
+        </div>
+        
+        <div class="accordion">
+            <input type="checkbox" id="accordion1" class="accordion-input">
+            <label for="accordion1" class="accordion-header">Why Ocean Conservation Matters</label>
+            <div class="accordion-content">
+                <p>Oceans cover 71% of our planet and are home to countless species. They regulate our climate, produce oxygen, and provide food for billions. Protecting marine life is essential for maintaining the balance of our entire ecosystem.</p>
+            </div>
+        </div>
+        
+        <div class="accordion">
+            <input type="checkbox" id="accordion2" class="accordion-input">
+            <label for="accordion2" class="accordion-header">Threats to Marine Life</label>
+            <div class="accordion-content">
+                <ul>
+                    <li><strong>Plastic Pollution:</strong> 8 million tons of plastic enter oceans yearly</li>
+                    <li><strong>Overfishing:</strong> Depletes fish populations faster than they can reproduce</li>
+                    <li><strong>Climate Change:</strong> Warmer waters and acidification harm coral reefs</li>
+                    <li><strong>Habitat Destruction:</strong> Coastal development destroys critical ecosystems</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="accordion">
+            <input type="checkbox" id="accordion3" class="accordion-input">
+            <label for="accordion3" class="accordion-header">How You Can Help</label>
+            <div class="accordion-content">
+                <ol>
+                    <li>Reduce single-use plastics in your daily life</li>
+                    <li>Choose sustainable seafood options</li>
+                    <li>Participate in beach cleanups</li>
+                    <li>Support marine conservation organizations</li>
+                    <li>Educate others about ocean issues</li>
+                </ol>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="faq-list">
+            <h3>Frequently Asked Questions</h3>
+            
+            <div class="faq-item">
+                <div class="faq-question">What marine animals are most at risk?</div>
+                <p>Sea turtles, coral reefs, whales, sharks, and many fish species are particularly vulnerable due to human activities like fishing, pollution, and climate change.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How does plastic harm ocean animals?</div>
+                <p>Animals often mistake plastic for food, which can cause starvation when their digestive systems become blocked. Many also become entangled in plastic debris.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Are coral reefs really dying?</div>
+                <p>Yes, about 50% of the world's coral reefs have died in the last 30 years due to warming waters, acidification, and pollution.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What percentage of oxygen comes from the ocean?</div>
+                <p>Marine plants, especially phytoplankton, produce 50-80% of the Earth's oxygen through photosynthesis.</p>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="contact-info">
+            <h4>Get Involved</h4>
+            <p>Join our community of ocean advocates:</p>
+            <p>📧 Email: <a href="mailto:info@arcticroaches.org">info@arcticroaches.org</a></p>
+            <p>🌐 Website: <a href="https://www.arcticroaches.org" target="_blank">www.arcticroaches.org</a></p>
+        </div>
+    </div>
+    
+    <!-- Button to open offcanvas -->
+    <a href="#offcanvasPanel" class="info-btn"><i class="fa-solid fa-info"></i></a>
+    
+    <!-- Overlay to close offcanvas when clicking outside -->
+    <a href="#" class="overlay"></a>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <!-- Logo on the left -->
+            <a class="navbar-brand" href="#">
+                <img src="/images/MAIN LOGO.png" alt="Arctic Roaches">
+            </a>
+
+            <!-- Mobile toggle button -->
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarContent"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation links -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ft.html">Fading Tides</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/eb.html">Echoes Below</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a
+                          class="nav-link dropdown-toggle"
+                          href="#"
+                          id="deeperWoundsDropdown"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                        >
+                          Deeper Wounds ▼
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/sc.html">Silent Crisis</a></li>
+                            <li><a class="dropdown-item" href="/tc.html">Toxic Currents</a></li>
+                            <li><a class="dropdown-item" href="/vg.html">Vanishing Giants</a></li>
+                            <li><a class="dropdown-item" href="/du.html">Depths Unseen</a></li>
+                            <li><a class="dropdown-item" href="/tp.html">Tipping Points</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/service.html">Take Action</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/re.html">Ripple Effects</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="main-content">
+        <header>
+            <div class="container">
+                <h1>PRIVACY POLICY</h1>
+            </div>
+        </header>
+    
+        <main class="container">
+            <p class="last-updated"><b>Last Updated:</b> 31st May, 2025</p>
+        
+            <h2>1. Information We Collect</h2>
+            <p>When you interact with our ocean conservation platform, we may collect:</p>
+            <ul>
+                <li><strong>Personal Information:</strong> If you sign petitions, subscribe to newsletters, or contact us, we may collect your name, email address, and location.</li>
+                <li><strong>Non-Personal Information:</strong> We automatically collect browser type, device information, and website usage data through cookies and analytics tools.</li>
+                <li><strong>User Content:</strong> Any comments, photos, or stories you share about marine conservation efforts.</li>
+            </ul>
+        
+            <h2>2. How We Use Your Information</h2>
+            <p>We use collected information to:</p>
+            <ul>
+                <li>Deliver petitions to relevant authorities and track campaign progress</li>
+                <li>Send updates about marine conservation efforts and activism opportunities</li>
+                <li>Improve website functionality and user experience</li>
+                <li>Analyze engagement with our content to better serve our mission</li>
+                <li>Respond to inquiries from concerned supporters</li>
+            </ul>
+        
+            <h2>3. Data Protection & Security</h2>
+            <p>We implement industry-standard measures to protect your information:</p>
+            <ul>
+                <li>SSL encryption for all data transmissions</li>
+                <li>Regular security audits of our systems</li>
+                <li>Limited access to personal data among our team members</li>
+                <li>Secure storage practices for all collected information</li>
+            </ul>
+        
+            <h2>4. Third-Party Services</h2>
+            <p>We work with trusted partners to enhance our impact:</p>
+            <ul>
+                <li><strong>Analytics:</strong> Google Analytics (anonymous usage data)</li>
+                <li><strong>Petition Platforms:</strong> Change.org or other ethical petition services</li>
+                <li><strong>Email Services:</strong> Mailchimp or similar for newsletter delivery</li>
+            </ul>
+            <p>These services have their own privacy policies, and we encourage you to review them.</p>
+        
+            <h2>5. Your Rights & Choices</h2>
+            <p>You have control over your data:</p>
+            <ul>
+                <li>Opt-out of communications at any time</li>
+                <li>Request access to or deletion of your personal data</li>
+                <li>Disable cookies in your browser settings</li>
+                <li>Choose not to provide optional information</li>
+            </ul>
+        
+            <h2>6. Children's Privacy</h2>
+            <p>While we encourage youth engagement in marine conservation, we do not knowingly collect personal information from children under 13 without parental consent.</p>
+        
+            <h2>7. Policy Updates</h2>
+            <p>We may update this policy as our conservation efforts evolve. Significant changes will be announced on our website.</p>
+        
+            <h2>8. Contact Us</h2>
+            <p>For privacy-related questions or to exercise your rights:</p>
+            <button class="contact-link"><a href="/service.html"><span>Contact Our Privacy Team</span></a></button>
+        </main>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>Arctic Roaches</h5>
+                    <p>Exposing the devastating impact of human activity on marine life and inspiring actionable change.</p>
+                    <button class="btn action-btn mt-2"><a href="/eb.html" class="btn2"><span class="spn2">Join the Movement</span></a></button>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="/rl.html">Reference Page</a></li>
+                        <li><a href="/re.html">Get Involved</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Stay Connected</h5>
+                    <div class="mb-3">
+                    <a href="#" class="text-decoration-none me-3">Instagram</a>
+                    <a href="#" class="text-decoration-none me-3">Twitter</a>
+                    <a href="#" class="text-decoration-none">TikTok</a>
+                </div>
+                <address>
+                    Email: <a href="mailto:action@arcticroaches.org">action@arcticroaches.org</a>
+                </address>
+            </div>
+            <hr class="footer-divider" />
+            <div class="text-center pt-3">
+                <p class="small footer-copyright">
+                  &copy; 2025 Arctic Roaches. All rights reserved. | <a href="/pp.html">Privacy Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- Custom Subscribe Modal -->
+    <div class="modal fade" id="subscribeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content subscribe">
+                <div class="modal-body p-0">
+                    <button type="button" class="btn-close position-absolute end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <p class="text-center">SUBSCRIBE</p>
+                    <input placeholder="Your e-mail" class="subscribe-input" name="email" type="email">
+                    <div class="submit-btn">SUBMIT</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Navbar scroll effect -->
+    <script>
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+    </script>
+</body>
+</html>

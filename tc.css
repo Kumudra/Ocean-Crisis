@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bebas+Neue&family=Irish+Grover&family=Jost:ital,wght@0,100..900;1,100..900&family=Kaushan+Script&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Luxurious+Roman&family=Manrope:wght@200..800&family=Monomakh&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Seaweed+Script&family=UnifrakturMaguntia&display=swap');
+
+::-webkit-scrollbar {
+      width: 5px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {            
+    background: #504b4b;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #302d2d;
+}
+
+/* Hero Section */
+.hero {
+    background-image: linear-gradient(rgba(5, 12, 18, 0.3), rgba(2, 21, 42, 0.3)), url(/images/tc-hero.png);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin-top: -70px; /* Adjusted to match navbar height */
+    margin-bottom: 0;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color: #fff;
+    overflow-x: hidden;
+}
+.hero h1 {
+    font-size: 5rem;
+}
+.hero p {
+    font-size: 1rem;
+}
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid #58C0DB;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 6s steps(30, end) forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+.typewriter2 {
+  overflow: hidden;
+  border-right: 2px solid #58C0DB;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+}
+
+/* Side extra styles */
+.side-extra {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    color: var(--sea-serpent);
+    font-family: 'Bebas Neue', cursive;
+    padding: 10px;
+    padding-right: 20px;
+}
+.side-line {
+    width: 1.5px;
+    height: 200px;
+    background-color: var(--sea-serpent);
+    border: none;
+    margin: 0 0 10px 0;
+}
+.side-number {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.side-text {
+    color: var(--sea-serpent);
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+.side-text p:last-child {
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    margin-top: 5px;
+    user-select: none;
+}
+.side-text hr {
+    width: 3px;
+    height: 235px;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--sea-serpent),
+        var(--sea-serpent) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    border: none;
+    margin: 0 -10px 2px 5px;
+}
+
+main {
+  background-color: #01070e;
+  color: var(--beau-blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1.text {
+  padding: 10% ;
+  align-items: center;
+  text-align: center;
+}
+.intro {
+  display: flex;
+  width: 70%;
+  gap: 5%;
+  margin-bottom: 5%;
+}
+.intro-desc {
+  width: 90%;
+  font-family: "Montserrat", sans-serif;
+}
+
+
+.rec-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 70%;
+  gap: 10%;
+}
+.rec-container img {
+  width: 300px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
+.chemical-pollution .rec-info {
+  border-left: none;
+}
+.plastic-pollution .rec-info {
+  border-right: none;
+}
+.rec-info {
+  font-family: "Montserrat", sans-serif;
+  border: 5px solid var(--sea-serpent);
+  padding: 6%;
+}
+.rec-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 4rem;
+}
+
+.counter {
+  width: 25%;
+  text-align: center;
+  margin: 10% 0;
+    text-align: center;
+    border-radius: 12px;
+    max-width: 700px;
+}
+.counter-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+
+}
+.counter p {
+  font-size: 13px;
+}
+.count-tracker {
+  font-size: 7rem;
+    font-family: 'Bebas Neue', cursive;
+
+}
+
+.map {
+  position: relative;
+  text-align: center;
+  align-items: center;
+  padding: 0 5%;
+}
+.map-desc {
+  text-align: center;
+}
+.map title {
+  text-align: center;
+}
+.map img {
+  width: 100%;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid var(--sea-serpent);
+  padding: 8px;
+}
+.hotspot-marker {
+  position: absolute;
+  z-index: 1;
+}
+
+.hotspot-marker > div.position-absolute {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  min-width: 180px;
+  pointer-events: none;
+    color: var(--dark-midnight) !important;
+}
+
+.hotspot-marker .bg-danger {
+  width: 8px !important;  /* Reduced from 15px */
+  height: 8px !important; /* Reduced from 15px */
+  padding: 0 !important;  /* Remove padding if any */
+}
+
+.hotspot-marker:hover > div.position-absolute {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+:root {
+  --rich-black: #000000;          /* Absolute black */
+  --sea-serpent: #00cfff;         /* Accent color */
+  --text-light: #ffffff;          /* True white */
+}
+
+.solution-section-new {
+  padding: 5rem 0;
+  font-family: 'Montserrat', sans-serif; /* Global font for section */
+}
+
+/* Title aligned to the left */
+.section-title {
+  text-align: left !important;
+  color: var(--text-light) !important;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+/* Content container */
+.solution-content-wrapper {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 3rem;
+}
+
+/* Image box */
+.solution-image-box {
+  border: 2px solid var(--sea-serpent);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.solution-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Section subtitle */
+.addressing-solutions-text {
+  color: var(--sea-serpent) !important;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-left: 4px solid var(--sea-serpent);
+  padding-left: 0.75rem; /* reduce or set to 0 */
+  margin: 0; /* remove any unwanted spacing */
+  text-align: left;
+}
+
+/* Paragraphs */
+.solution-section-new p,
+.solution-section-new .text-muted {
+  color: var(--text-light) !important;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+
+/* Points */
+.solution-point {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 4px solid var(--sea-serpent);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 223, 255, 0.1);
+  transition: background 0.3s ease, transform 0.3s ease;
+  color: var(--text-light) !important;
+}
+
+.solution-point:hover {
+  background: rgba(0, 223, 255, 0.08);
+  transform: translateY(-4px);
+}

@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Echoes Below</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <!-- CSS Styling -->
+    <link rel="stylesheet" href="eb.css" />
+
+    <!-- Fontawesome | Bootstrap | AOS -->
+    <script src="https://kit.fontawesome.com/c25cabee86.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bebas+Neue&family=Irish+Grover&family=Kaushan+Script&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Luxurious+Roman&family=Monomakh&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Seaweed+Script&family=UnifrakturMaguntia&display=swap" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <style>
+      :root {
+        --rich-black: #050c12;
+        --beau-blue: #b5d5da;
+        --sea-serpent: #58c0db;
+        --green-blue: #166da6;
+        --dark-midnight: #063467;
+      }
+
+      body {
+        font-family: "Playfair Display", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        background-color: #f8f9fa;
+        padding-top: 70px; /* To account for fixed navbar */
+      }
+
+      /* Transparent sticky navbar */
+      .navbar {
+        background-color: rgba(5, 12, 18, 0.3) !important;
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+      .navbar.scrolled {
+        background-color: var(--rich-black) !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .navbar-brand img {
+        height: 50px;
+        transition: transform 0.3s ease;
+      }
+      .navbar-brand:hover img {
+        transform: scale(1.05);
+      }
+      .nav-link {
+        color: #fff !important;
+        font-weight: 500;
+        position: relative;
+        margin: 0 8px;
+        padding-bottom: 5px !important;
+        transition: all 0.3s ease;
+      }
+      .nav-link:hover {
+        color: var(--beau-blue) !important;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--sea-serpent);
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after,
+      .nav-link:focus::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+      .dropdown-menu {
+        background-color: rgba(5, 12, 18, 0.7) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(5, 12, 18, 0.7) !important;
+      }
+      .dropdown-item {
+        color: var(--beau-blue) !important;
+        transition: all 0.2s ease;
+        position: relative;
+        padding-left: 1.5rem;
+      }
+      .dropdown-item:hover {
+        background-color: var(--green-blue);
+        padding-left: 2rem;
+        color: white !important;
+      }
+      .dropdown-item::before {
+        content: "→";
+        position: absolute;
+        left: 0.5rem;
+        opacity: 0;
+        transition: all 0.2s ease;
+        color: var(--sea-serpent);
+      }
+      .dropdown-item:hover::before {
+        opacity: 1;
+        left: 0.8rem;
+      }
+      .dropdown-toggle::after {
+        display: inline-block;
+        margin-left: 0.3em;
+        vertical-align: middle;
+        border: none;
+        color: var(--sea-serpent);
+        font-size: 0.7em;
+      }
+
+      /* Footer styles */
+      footer {
+        background-color: var(--rich-black);
+        color: #fff;
+        padding: 3rem 0 1rem 0;
+      }
+      footer h5 {
+          font-family: 'Bebas Neue', cursive;
+          font-size: 2rem;
+      }
+      .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      .footer-links a:hover {
+        color: var(--sea-serpent);
+        text-decoration: underline;
+        padding-left: 5px;
+      }
+      .btn2 {
+          position: relative;
+          display: inline-block;
+          padding: 15px 30px;
+          border: 2px solid #fefefe;
+          text-transform: uppercase;
+          color: #fefefe;
+          text-decoration: none;
+          transition: 0.3s;
+          font-family: 'Bebas Neue', cursive;
+          font-size: 1.25rem;
+          letter-spacing: 3px;
+      }
+      .btn2::before {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          width: calc(100% + 4px);
+          height: calc(100% - -2px);
+          background-color: var(--rich-black);
+          transition: 0.3s ease-out;
+          transform: scaleY(1);
+      }
+      .btn2::after {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          width: calc(100% + 4px);
+          height: calc(100% - 50px);
+          background-color: var(--rich-black);
+          transition: 0.3s ease-out;
+          transform: scaleY(1);
+      }
+      .btn2:hover::before {
+          transform: translateY(-25px);
+          height: 0;
+      }
+      .btn2:hover::after {
+          transform: scaleX(0);
+          transition-delay: 0.15s;
+      }
+      .btn2:hover {
+          border: 2px solid #fefefe;
+      }
+      .btn2 span {
+          position: relative;
+          z-index: 3;
+      }
+      button {
+          text-decoration: none;
+          border: none;
+          background-color: transparent;
+      }
+
+      :root {
+          --rich-black: #021024; /* Deep black for background */
+          --dark-blue: #052659; /* Dark blue for offcanvas */
+          --teal: #5483B3; /* Teal for accents */
+          --light-teal: #7DA0CA; /* Lighter teal for headers */
+          --light-blue: #C1E8FF; /* Light blue for text */
+      }
+        
+      /* Button to open offcanvas */
+      .info-btn {
+          position: fixed;
+          bottom: 20px; /* Move button to the bottom */
+          right: 20px;
+          background-color: var(--dark-blue); /* Ocean teal button */
+          color: white;
+          border: none;
+          padding: 12px 20px;
+          border-radius: 50%;
+          cursor: pointer;
+          z-index: 1000;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+          transition: background-color 0.3s;
+      }
+      .info-btn:hover {
+          background-color: var(--light-teal); /* Lighter teal on hover */
+      }
+
+      /* Offcanvas styles - starts completely hidden */
+      .offcanvas {
+          position: fixed;
+          top: 0;
+          right: -400px;
+          width: 380px;
+          height: 100%;
+          background-color: var(--dark-blue); /* Darker ocean background for offcanvas */
+          box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+          transition: right 0.3s ease;
+          z-index: 1001;
+          padding: 20px;
+          overflow-y: auto;
+          visibility: hidden; /* Added to ensure it's not visible initially */
+      }
+        
+      .offcanvas:target {
+          right: 0;
+          visibility: visible; /* Only becomes visible when targeted */
+      }
+      .offcanvas-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+          padding-bottom: 10px;
+          border-bottom: 2px solid var(--light-teal); /* Light teal border */
+          font-family: 'Bebas Neue', cursive;
+      }
+      .offcanvas-title {
+          color: var(--light-blue); /* Light title color */
+          margin: 0;
+          font-family: 'Bebas Neue', cursive; /* Title font */
+          font-size: 1.8em; /* Increased font size for better visibility */
+      }
+      .close-btn {
+          background: none;
+          border: none;
+          font-size: 24px;
+          cursor: pointer;
+          color: var(--light-blue); /* Light close button color */
+          text-decoration: none;
+      }
+      /* Accordion styles using checkbox hack */
+      .accordion {
+          margin-bottom: 15px;
+      }
+      .accordion-input {
+          display: none;
+      }
+      .accordion-header {
+          background-color: var(--teal); /* Darker teal for accordion header */
+          color: var(--light-blue); /* Light text color */
+          padding: 12px 15px;
+          cursor: pointer;
+          border-radius: 5px;
+          font-weight: bold;
+          display: block;
+          transition: background-color 0.3s, color 0.3s; /* Added color transition */
+      }
+      .accordion-header:hover {
+          background-color: var(--light-teal); /* Lighter teal on hover */
+          color: var(--rich-black); /* Darker text color on hover */
+      }
+      .accordion-header::after {
+          content: '+';
+          float: right;
+          font-size: 18px;
+      }
+      .accordion-input:checked + .accordion-header::after {
+          content: '-';
+      }
+      .accordion-content {
+          padding: 0 15px;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease, padding 0.3s ease;
+          background-color: var(--rich-black); /* Darker content background */
+          border-radius: 0 0 5px 5px;
+          color: var(--light-blue); /* Light text color for content */
+      }
+      .accordion-input:checked ~ .accordion-content {
+          padding: 15px;
+          max-height: 500px;
+      }
+        
+      /* FAQ list styles */
+      .faq-list {
+          margin-top: 20px;
+          color: var(--light-blue); /* Light text color for FAQ */
+      }
+      .faq-list h3 {
+          font-family: 'Bebas Neue', cursive;
+          font-size: 2rem;
+      }
+      .faq-item {
+          margin-bottom: 15px;
+          background-color: var(--teal); /* Darker teal for FAQ item */
+          padding: 15px;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      }
+      .faq-question {
+          color: var(--light-blue); /* Light question color */
+          font-weight: bold;
+          margin-bottom: 8px;
+      }
+        
+      /* Section divider */
+      .section-divider {
+          margin: 25px 0;
+          border: 0;
+          height: 1px;
+          background-image: linear-gradient(to right, rgba(255,255,255,0), var(--light-teal), rgba(255,255,255,0));
+      }
+        
+      /* Contact info */
+      .contact-info {
+          margin-top: 20px;
+          font-size: 14px;
+          color: var(--light-blue); /* Light text color for contact info */
+      }
+      .contact-info h4 {
+          font-family: 'Bebas Neue', cursive;
+      }
+      .contact-info a {
+          color: var(--light-teal); /* Light link color */
+          text-decoration: none;
+      }
+      .contact-info a:hover {
+          text-decoration: underline;
+      }
+        
+      /* Overlay when offcanvas is open */
+      .overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(2, 16, 36, 0.5);
+          opacity: 0.5;
+          z-index: 1000;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.3s ease;
+      }
+      .offcanvas:target ~ .overlay {
+          opacity: 1;
+          pointer-events: auto;
+      }
+
+      /* Subscribe Modal Styles */
+      .subscribe {
+          position: relative;
+          height: 180px;
+          width: 300px;
+          padding: 20px;
+          background-color: #FFF;
+          border-radius: 4px;
+          color: #333;
+          box-shadow: 0px 0px 60px 5px rgba(0, 0, 0, 0.4);
+          border: none;
+      }
+      .subscribe:after {
+          position: absolute;
+          content: "";
+          right: -10px;
+          bottom: 18px;
+          width: 0;
+          height: 0;
+          border-left: 0px solid transparent;
+          border-right: 10px solid transparent;
+          border-bottom: 10px solid var(--sea-serpent);
+      }
+      .subscribe p {
+          text-align: center;
+          font-size: 20px;
+          font-weight: bold;
+          letter-spacing: 4px;
+          line-height: 28px;
+          margin-bottom: 25px;
+      }
+      .subscribe-input {
+          position: absolute;
+          bottom: 30px;
+          border: none;
+          border-bottom: 1px solid #d4d4d4;
+          padding: 10px;
+          width: 82%;
+          background: transparent;
+          transition: all .25s ease;
+      }
+      .subscribe-input:focus {
+          outline: none;
+          border-bottom: 1px solid var(--sea-serpent);
+      }
+      .submit-btn {
+          position: absolute;
+          border-radius: 30px;
+          border-bottom-right-radius: 0;
+          border-top-right-radius: 0;
+          background-color: var(--sea-serpent);
+          color: #FFF;
+          padding: 12px 25px;
+          display: inline-block;
+          font-size: 12px;
+          font-weight: bold;
+          letter-spacing: 5px;
+          right: -30px;
+          bottom: -44px;
+          cursor: pointer;
+          transition: all .25s ease;
+          box-shadow: -5px 6px 20px 0px rgba(26, 26, 26, 0.4);
+      }
+      .submit-btn:hover {
+          background-color: var(--green-blue);
+          box-shadow: -5px 6px 20px 0px rgba(88, 88, 88, 0.569);
+      }
+
+      /* Modal positioning */
+      .modal-dialog {
+          display: flex;
+          align-items: center;
+      }
+      /* Close button styling */
+      .btn-close {
+          filter: invert(0.5);
+          transition: filter 0.3s;
+      }
+      .btn-close:hover {
+          filter: invert(0.8);
+      }
+    </style>
+</head>
+<body>
+    <!-- Offcanvas panel - starts completely hidden -->
+    <div class="offcanvas" id="offcanvasPanel">
+        <div class="offcanvas-header">
+            <h2 class="offcanvas-title">Ocean Awareness Info</h2>
+            <a href="#" class="close-btn">&times;</a>
+        </div>
+        
+        <div class="accordion">
+            <input type="checkbox" id="accordion1" class="accordion-input">
+            <label for="accordion1" class="accordion-header">Why Ocean Conservation Matters</label>
+            <div class="accordion-content">
+                <p>Oceans cover 71% of our planet and are home to countless species. They regulate our climate, produce oxygen, and provide food for billions. Protecting marine life is essential for maintaining the balance of our entire ecosystem.</p>
+            </div>
+        </div>
+        
+        <div class="accordion">
+            <input type="checkbox" id="accordion2" class="accordion-input">
+            <label for="accordion2" class="accordion-header">Threats to Marine Life</label>
+            <div class="accordion-content">
+                <ul>
+                    <li><strong>Plastic Pollution:</strong> 8 million tons of plastic enter oceans yearly</li>
+                    <li><strong>Overfishing:</strong> Depletes fish populations faster than they can reproduce</li>
+                    <li><strong>Climate Change:</strong> Warmer waters and acidification harm coral reefs</li>
+                    <li><strong>Habitat Destruction:</strong> Coastal development destroys critical ecosystems</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="accordion">
+            <input type="checkbox" id="accordion3" class="accordion-input">
+            <label for="accordion3" class="accordion-header">How You Can Help</label>
+            <div class="accordion-content">
+                <ol>
+                    <li>Reduce single-use plastics in your daily life</li>
+                    <li>Choose sustainable seafood options</li>
+                    <li>Participate in beach cleanups</li>
+                    <li>Support marine conservation organizations</li>
+                    <li>Educate others about ocean issues</li>
+                </ol>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="faq-list">
+            <h3>Frequently Asked Questions</h3>
+            
+            <div class="faq-item">
+                <div class="faq-question">What marine animals are most at risk?</div>
+                <p>Sea turtles, coral reefs, whales, sharks, and many fish species are particularly vulnerable due to human activities like fishing, pollution, and climate change.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How does plastic harm ocean animals?</div>
+                <p>Animals often mistake plastic for food, which can cause starvation when their digestive systems become blocked. Many also become entangled in plastic debris.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Are coral reefs really dying?</div>
+                <p>Yes, about 50% of the world's coral reefs have died in the last 30 years due to warming waters, acidification, and pollution.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What percentage of oxygen comes from the ocean?</div>
+                <p>Marine plants, especially phytoplankton, produce 50-80% of the Earth's oxygen through photosynthesis.</p>
+            </div>
+        </div>
+        
+        <hr class="section-divider">
+        
+        <div class="contact-info">
+            <h4>Get Involved</h4>
+            <p>Join our community of ocean advocates:</p>
+            <p>📧 Email: <a href="mailto:info@arcticroaches.org">info@arcticroaches.org</a></p>
+            <p>🌐 Website: <a href="https://www.arcticroaches.org" target="_blank">www.arcticroaches.org</a></p>
+        </div>
+    </div>
+    
+    <!-- Button to open offcanvas -->
+    <a href="#offcanvasPanel" class="info-btn"><i class="fa-solid fa-info"></i></a>
+    
+    <!-- Overlay to close offcanvas when clicking outside -->
+    <a href="#" class="overlay"></a>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <!-- Logo on the left -->
+            <a class="navbar-brand" href="#">
+                <img src="/images/MAIN LOGO.png" alt="Arctic Roaches">
+            </a>
+
+            <!-- Mobile toggle button -->
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarContent"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation links -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ft.html">Fading Tides</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/eb.html">Echoes Below</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a
+                          class="nav-link dropdown-toggle"
+                          href="#"
+                          id="deeperWoundsDropdown"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                        >
+                          Deeper Wounds ▼
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/sc.html">Silent Crisis</a></li>
+                            <li><a class="dropdown-item" href="/tc.html">Toxic Currents</a></li>
+                            <li><a class="dropdown-item" href="/vg.html">Vanishing Giants</a></li>
+                            <li><a class="dropdown-item" href="/du.html">Depths Unseen</a></li>
+                            <li><a class="dropdown-item" href="/tp.html">Tipping Points</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/service.html">Take Action</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/re.html">Ripple Effects</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-section">
+            <div class="hero-content">
+              <div class="title">
+                <h1 class="display-2 typewriter1">Campaign</h1>
+                <p class="lead">Climate Change Impact on Ocean</p>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <!--Gallery-->
+          <div class="Gallery-text">
+            <h2>The Ocean is Speaking. Are you listening yourself?</h2>
+          </div>
+          <div class="container py-4">
+            <div class="row g-3">
+              <!-- LEFT COLUMN: Two tall boxes + one wide box -->
+              <div class="col-md-4">
+                <div class="row g-3">
+                  <div class="col-6">
+                    <div class="box tall">
+                      <img src="https://i.pinimg.com/736x/c3/55/83/c355832bc40e3ac27da733ee09c7e4ba.jpg" alt="">
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="box tall">
+                      <img src="https://i.pinimg.com/736x/39/7d/d7/397dd7031148a86ff2c80f86b1dfd0d0.jpg" alt="">
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="box wide">
+                      <img src="https://i.pinimg.com/736x/1d/c6/8d/1dc68dbec0ca31b190a5bca309d71012.jpg" alt="turtle">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- MIDDLE LEFT COLUMN -->
+              <div class="col-md-4">
+                <div class="row g-3">
+                  <div class="col-12">
+                    <div class="box short">
+                      <img src="https://i.pinimg.com/736x/e7/c9/60/e7c9609164bb6f7f37cba2bbc8953bf4.jpg" alt="">
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="box tall">
+                      <img src="https://i.pinimg.com/736x/1f/da/e2/1fdae22ef2aae2badf8bf48aea6cc1c7.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- MIDDLE RIGHT COLUMN: Super tall box -->
+              <div class="col-md-2">
+                <div class="box super-tall">
+                  <img src="https://i.pinimg.com/736x/2b/16/fd/2b16fdb33077d3843a33ccc380a444f2.jpg" alt="">
+                </div>
+              </div>
+              <!-- RIGHTMOST COLUMN: 3 short boxes -->
+                  <div class="col-md-2 d-flex flex-column gap-3">
+                    <div class="box short">
+                      <img src="/images/crab.png" alt="">
+                    </div>
+                    <div class="box short">
+                      <img src="/images/crab2.png" alt="">
+                    </div>
+                    <div class="box short">
+                      <img src="https://i.pinimg.com/736x/23/ae/56/23ae565e236528e14fab69085f2a82bf.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--Cards carousel horizontally-->
+              <h1 class="cards-car-h1">Youth Voices</h1>
+              <div class="container-carousel">
+                <div class="product-card">
+                  <div class="product-inside">
+                    <div class="product-image-container">
+                      <img src="https://i.pinimg.com/736x/13/98/19/13981992596017b90daeecbeaf235cde.jpg" alt="David Attenborough">
+                    </div>
+                    <div class="product-info pb-2">
+                      <h2>Ocean with David Attenborough</h2>
+                      <p>"If we save the sea, we save our world."</p>
+                    </div>
+                  </div>
+                </div>    
+
+                <div class="product-card">
+                  <div class="product-inside">
+                    <div class="product-image-container">
+                      <img src="https://i.pinimg.com/736x/28/13/14/2813147d79f58a54bb4ed153c067fa64.jpg" alt="Sky ocean rescue">
+                    </div>
+                    <div class="product-info pb-2">
+                      <h2>Sky Ocean Rescue, WWF</h2>
+                      <p>"Our oceans are in crisis. Together, we can turn the tide."</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="product-card">
+                  <div class="product-inside">
+                    <div class="product-image-container">
+                      <img src="https://i.pinimg.com/736x/4f/a9/98/4fa998e1b8a9dca0720605b027b527a8.jpg" alt="Planet or Plastic?">
+                    </div>
+                    <div class="product-info pb-2">
+                      <h2>Planet or Plastic? National Geographic</h2>
+                      <p>"18 billion pounds of plastic ends up in the ocean each year."</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="product-card">
+                  <div class="product-inside">
+                    <div class="product-image-container">
+                      <img src="https://i.pinimg.com/736x/72/30/0e/72300e50c7e1151ce76b1f351ec8929a.jpg" alt="What goes in the ocean">
+                    </div>
+                    <div class="product-info pb-2">
+                      <h2>What Goes in the Ocean Goes in You</h2>
+                      <p>"Microplastics have been found in human blood, lungs, and even placentas."</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="product-card">
+                  <div class="product-inside">
+                    <div class="product-image-container">
+                      <img src="https://i.pinimg.com/736x/79/b8/9b/79b89b61f74320f0b851ba487cc79426.jpg" alt="Youth for Oceans">
+                    </div>
+                    <div class="product-info pb-2">
+                      <h2>Youth for Oceans</h2>
+                      <p>"We are the first generation to know we're destroying the world, and the last that can do anything about it."</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <!--Text divider-->
+            <div class="inner-container">
+                <h1>LISTEN TO THE OCEAN WHEN IT'S SHOUTING!</h1>
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="jelly-plastic2.png" alt="">
+                    </div>
+                <div class="col-md-10">
+                    <p class="text-align-right"><b>
+                        <i>
+                        When the ocean shouts, it's not merely a sound; it's a profound statement. It signifies a tipping point, a culmination of smaller pressures that have built to an undeniable crescendo. This is when we must listen most intently, not just with our ears, but with our minds and hearts. These powerful surges often carry vital messages, revealing truths we've perhaps overlooked or avoided. Embracing these moments of intense clarity, though sometimes unsettling, allows us to confront challenges head-on and navigate
+                        </i>
+                    </p>
+                </div>
+                </div>
+              <p class="text-align-center"><b>
+                  Turn the tides before <br />
+                  it becomes a graveyard of forgotten blue.</b>
+                <br/><br/>
+                <i>
+                  If the sea still believes in our ability to change, we must not let it down. We must listen to its cries, the voices of a drowing world. Save the sea, before the waves forget how to sing.
+                </i>
+              </p>
+            </div>
+
+            <!-- THREE COLUMNS, VERTICAL CARDS STACK CAROUSEL -->
+            <div class="row mb-2">
+                <!-- COLUMN 1 -->
+                <div class="col-md-4">
+                    <div class="container-fluid">
+                        <!-- Header -->
+                        <div class="header">
+                            <h1>Beach Cleanups</h1>
+                        </div>
+                        <!-- Vertical Carousel -->
+                        <div class="vertical-carousel-container">
+                            <div class="vertical-carousel">
+                            <input type="radio" name="slider" id="slide1" checked hidden>
+                            <input type="radio" name="slider" id="slide2" hidden>
+                            <input type="radio" name="slider" id="slide3" hidden>
+                            <input type="radio" name="slider" id="slide4" hidden>
+                            <input type="radio" name="slider" id="slide5" hidden>
+                    
+                            <!-- Card Stack -->
+                            <div class="card-stack">
+                                <!-- Card 1 -->
+                                <div class="carousel-card">
+                                    <img src="https://i.pinimg.com/736x/27/a2/a1/27a2a146a66c0d0687129538c163510d.jpg" alt="Ocean Conservation">
+                                    <div class="card-content">
+                                        <h3>Ocean Blue Cleanup</h3>
+                                        <p>"Ocean Blue Cleanup rises to cradle the ocean’s battered lungs and restore its ancient breath."</p>
+                                    </div>
+                                </div>
+                        
+                                <!-- Card 2 -->
+                                <div class="carousel-card">
+                                    <img src="https://i.pinimg.com/736x/b3/76/f3/b376f3b74976369f1d417d03e87e3d47.jpg" alt="Plastic Pollution">
+                                    <div class="card-content">
+                                        <h3>California Beach Cleanups</h3>
+                                        <p>"Each sweep of California’s beaches is a verse in a song of redemption, plucking plastic serpents from Poseidon's garden."</p>
+                                    </div>
+                                </div>
+                        
+                                <!-- Card 3 -->
+                                <div class="carousel-card">
+                                    <img src="https://sandiego.surfrider.org/hs-fs/hubfs/241026_WaveFC_BeachCleanup_008%20(2).jpg?width=675&height=450&name=241026_WaveFC_BeachCleanup_008%20(2).jpg" alt="Plastic Waste">
+                                    <div class="card-content">
+                                        <h3>Beach cleanup in San Diego County</h3>
+                                        <p>"San Diego’s sands whisper stories of careless tides, and with every cleanup, we stitch back the sea’s tapestry, thread by glistening thread."</p>
+                                    </div>
+                                </div>
+                        
+                                <!-- Card 4 -->
+                                <div class="carousel-card">
+                                    <img src="https://i.pinimg.com/736x/c5/dc/d2/c5dcd204a6531d90193f5de4f1cb4125.jpg" alt="Microplastics">
+                                    <div class="card-content">
+                                        <h3>The LARGEST cleanup in HISTORY</h3>
+                                        <p>"The largest cleanup in history—a Leviathan-scale rescue, an uprising of human hearts to battle the ocean’s plastic kraken."</p>
+                                    </div>
+                                </div>
+                        
+                                <!-- Card 5 -->
+                                <div class="carousel-card">
+                                    <img src="https://i.pinimg.com/736x/e5/9a/c8/e59ac8c8a17e66a64df4241808211bd8.jpg" alt="Youth Activism">
+                                    <div class="card-content">
+                                        <h3>4ocean collects record-setting 30 million pounds of trash</h3>
+                                        <p>"4ocean’s nets groan with the weight of our mistakes, but each pound lifted is a promise that the tide can turn."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Controls -->
+                            <div class="controls">
+                                <label for="slide1" class="control-btn">1</label>
+                                <label for="slide2" class="control-btn">2</label>
+                                <label for="slide3" class="control-btn">3</label>
+                                <label for="slide4" class="control-btn">4</label>
+                                <label for="slide5" class="control-btn">5</label>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <!-- COLUMN 2 -->
+            <div class="col-md-4">
+                <div class="container-fluid">
+                    <!-- Header -->
+                    <div class="header">
+                        <h1>Petitions</h1>
+                    </div>
+                    <!-- Vertical Carousel -->
+                    <div class="vertical-carousel-container">
+                        <div class="vertical-carousel">
+                            <input type="radio" name="sliderb" id="slide1b" checked hidden>
+                            <input type="radio" name="sliderb" id="slide2b" hidden>
+                            <input type="radio" name="sliderb" id="slide3b" hidden>
+                            <input type="radio" name="sliderb" id="slide4b" hidden>
+                            <input type="radio" name="sliderb" id="slide5b" hidden>
+                
+                            <!-- Card Stack -->
+                            <div class="card-stack">
+                                <!-- Card 1 -->
+                                <div class="carousel-card">
+                                    <img src="https://i.pinimg.com/736x/bc/85/49/bc854961c677f9150558068eff73096e.jpg" alt="Ocean Conservation">
+                                    <div class="card-content">
+                                        <h3>Stop deep sea mining before it starts</h3>
+                                        <p>"Let the ocean’s heart beat wild and free; stop the plunder before it’s born."</p>
+                                    </div>
+                                </div>
+                                <!-- Card 2 -->
+                                <div class="carousel-card">
+                                    <img src="https://i.pinimg.com/736x/42/eb/df/42ebdf1f4f3f697cbdbcbd1cd1dd7723.jpg" alt="Plastic Pollution">
+                                    <div class="card-content">
+                                        <h3>Protect the Ocean by Supporting the High Seas Treaty</h3>
+                                        <p>"Protect the ocean, preserve life—support the High Seas Treaty now."</p>
+                                    </div>
+                                </div>
+                                <!-- Card 3 -->
+                                <div class="carousel-card">
+                                    <img src="https://i.pinimg.com/736x/66/0a/8a/660a8ad3235ac4202fe7d72f9431cc05.jpg" alt="Plastic Waste">
+                                    <div class="card-content">
+                                        <h3>Ocean Action Is Climate Action: Elevating Ocean-Climate Ambition from Nice to Belem</h3>
+                                        <p>"Ocean action is climate action—let’s raise ambition from Nice to Belem and beyond."</p>
+                                    </div>
+                                </div>
+                                <!-- Card 4 -->
+                                <div class="carousel-card">
+                                    <img src="https://i.pinimg.com/736x/cd/f5/c0/cdf5c083dfe82e5e85145d844a9c8ff3.jpg" alt="Microplastics">
+                                    <div class="card-content">
+                                        <h3>Global Plastics Treaty now!</h3>
+                                        <p>"Global Plastics Treaty now—no more excuses, no more delay!"</p>
+                                    </div>
+                                </div>
+                                <!-- Card 5 -->
+                                <div class="carousel-card">
+                                    <img src="https://i.pinimg.com/736x/ba/a0/7f/baa07f2f47d3eb52bbfd19759480fb34.jpg" alt="Youth Activism">
+                                    <div class="card-content">
+                                        <h3>BAN BOTTOM TRAWLING: Protect NZ's Oceans Before It's Too Late!</h3>
+                                        <p>"BAN BOTTOM TRAWLING—stand for the sea, before the last reef gasps its final breath!"</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Controls -->
+                            <div class="controls">
+                                <label for="slide1b" class="control-btn">1</label>
+                                <label for="slide2b" class="control-btn">2</label>
+                                <label for="slide3b" class="control-btn">3</label>
+                                <label for="slide4b" class="control-btn">4</label>
+                                <label for="slide5b" class="control-btn">5</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- COLUMN 3 -->
+            <div class="col-md-4">
+                <div class="container-fluid">
+                    <!-- Header -->
+                    <div class="header">
+                        <h1>Fundraisers</h1>
+                    </div>
+        
+                    <!-- Vertical Carousel -->
+                    <div class="vertical-carousel-container">
+                        <div class="vertical-carousel">
+                            <input type="radio" name="slider" id="slide1c" checked hidden>
+                            <input type="radio" name="slider" id="slide2c" hidden>
+                            <input type="radio" name="slider" id="slide3c" hidden>
+                            <input type="radio" name="slider" id="slide4c" hidden>
+                            <input type="radio" name="slider" id="slide5c" hidden>
+                            <!-- Card Stack -->
+                            <div class="card-stack">
+                                <!-- Card 1 -->
+                                <div class="carousel-card">
+                                    <img src="https://i.pinimg.com/736x/c1/41/66/c14166530cd16b0303566394f01aefb2.jpg" alt="Ocean Conservation">
+                                    <div class="card-content">
+                                        <h3>Fundraiser for the sea reef</h3>
+                                        <p>"Let our generosity become coral fingers, weaving life’s cathedral anew beneath the waves."</p>
+                                    </div>
+                                </div>
+                                <!-- Card 2 -->
+                                <div class="carousel-card">
+                                    <img src="https://i.pinimg.com/736x/5d/15/85/5d15853454e6621fca62144b3ead815b.jpg" alt="Plastic Pollution">
+                                    <div class="card-content">
+                                        <h3>Take action to save whales and dolphins</h3>
+                                        <p>"Be the voice that echoes in the deep, a lighthouse of hope to guide these ocean phantoms through the storms of our negligence."</p>
+                                    </div>
+                                </div>
+                                <!-- Card 3 -->
+                                <div class="carousel-card">
+                                    <img src="https://i.pinimg.com/736x/09/0a/cf/090acf6eb88f7b5199f63d8cc1de7931.jpg" alt="Plastic Waste">
+                                    <div class="card-content">
+                                        <h3>Save sea turtles together with family and friends!</h3>
+                                        <p>"a chorus of hearts wading into the tide, weaving a legacy of protection beneath the sunlit ripples"</p>
+                                    </div>
+                                </div>
+                                <!-- Card 4 -->
+                                <div class="carousel-card">
+                                    <img src="https://i.pinimg.com/736x/e4/b2/d4/e4b2d404037f21c33a97a53d780d9b0d.jpg" alt="Microplastics">
+                                    <div class="card-content">
+                                        <h3>FUNDRAISE For the manta trust</h3>
+                                        <p>"A dance of coins and compassion to keep the ocean’s silent dancers spinning through the blue veils of tomorrow."</p>
+                                    </div>
+                                </div>
+                                <!-- Card 5 -->
+                                <div class="carousel-card">
+                                    <img src="https://i.pinimg.com/736x/c5/06/93/c5069326c8f3c88d1431f9be7e95e699.jpg" alt="Youth Activism">
+                                    <div class="card-content">
+                                        <h3>Let's save the Great Hammerhead Shark</h3>
+                                        <p>"So the sea’s ancient rhythms don’t echo with its ghostly absence."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Controls -->
+                            <div class="controls">
+                                <label for="slide1c" class="control-btn">1</label>
+                                <label for="slide2c" class="control-btn">2</label>
+                                <label for="slide3c" class="control-btn">3</label>
+                                <label for="slide4c" class="control-btn">4</label>
+                                <label for="slide5c" class="control-btn">5</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+        <center><h2><i>As they cry in silently, our actions echo louder than their tears.</i></h2></center>
+        <br>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>Arctic Roaches</h5>
+                    <p>Exposing the devastating impact of human activity on marine life and inspiring actionable change.</p>
+                    <button class="btn action-btn mt-2"><a href="/eb.html" class="btn2"><span class="spn2">Join the Movement</span></a></button>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="/rl.html">Reference Page</a></li>
+                        <li><a href="/re.html">Get Involved</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#subscribeModal">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Stay Connected</h5>
+                    <div class="mb-3">
+                    <a href="#" class="text-decoration-none me-3">Instagram</a>
+                    <a href="#" class="text-decoration-none me-3">Twitter</a>
+                    <a href="#" class="text-decoration-none">TikTok</a>
+                </div>
+                <address>
+                    Email: <a href="mailto:action@arcticroaches.org">action@arcticroaches.org</a>
+                </address>
+            </div>
+            <hr class="footer-divider" />
+            <div class="text-center pt-3">
+                <p class="small footer-copyright">
+                  &copy; 2025 Arctic Roaches. All rights reserved. | <a href="/pp.html">Privacy Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- Custom Subscribe Modal -->
+    <div class="modal fade" id="subscribeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content subscribe">
+                <div class="modal-body p-0">
+                    <button type="button" class="btn-close position-absolute end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <p class="text-center">SUBSCRIBE</p>
+                    <input placeholder="Your e-mail" class="subscribe-input" name="email" type="email">
+                    <div class="submit-btn">SUBMIT</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Bootstrap JS Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Navbar scroll effect -->
+        <script>
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            AOS.init( { // Initialize AOS (Animate On Scroll) library
+                once:true, // Whether animation should happen only once - while scrolling down
+                mirror:false, // Whether elements should animate out while scrolling past them
+            } );
+        </script>
+    </body>
+        <!-- Navbar scroll effect -->
+        <script>
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            AOS.init( { // Initialize AOS (Animate On Scroll) library
+                once:true, // Whether animation should happen only once - while scrolling down
+                mirror:false, // Whether elements should animate out while scrolling past them
+            } );
+        </script>
+    </body>
+</html>
